@@ -1,4 +1,5 @@
-import React, { forwardRef, useId } from 'react';
+import React, { forwardRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { cn } from '../../utils/cn';
 import { Label } from '../typography/Label';
 import { HelperText } from '../typography/HelperText';
@@ -37,8 +38,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     },
     ref,
   ) => {
-    const inputId = useId();
-    return (
+    const inputId = `id-${uuidv4()}`;
+      return (
       <div className={cn('flex flex-col gap-1.5', fullWidth ? 'w-full' : 'w-auto')}>
         {label && (
           <Label htmlFor={inputId} className={cn(disabled && 'text-gray-400')}>

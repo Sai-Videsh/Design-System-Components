@@ -38,6 +38,18 @@ const meta: Meta<CheckboxProps> = {
 export default meta;
 type Story = StoryObj<CheckboxProps>;
 
+// Component for controlled checkbox with state
+const ControlledCheckbox = () => {
+  const [checked, setChecked] = React.useState(false);
+  return (
+    <Checkbox
+      label={`Checkbox is ${checked ? 'checked' : 'unchecked'}`}
+      checked={checked}
+      onChange={(e) => setChecked(e.target.checked)}
+    />
+  );
+};
+
 export const Default: Story = {
   args: {
     label: 'Accept terms and conditions',
@@ -84,16 +96,7 @@ export const Sizes: Story = {
 };
 
 export const Controlled: Story = {
-  render: () => {
-    const [checked, setChecked] = React.useState(false);
-    return (
-      <Checkbox
-        label={`Checkbox is ${checked ? 'checked' : 'unchecked'}`}
-        checked={checked}
-        onChange={(e) => setChecked(e.target.checked)}
-      />
-    );
-  },
+  render: () => <ControlledCheckbox />,
 };
 
 export const Accessibility: Story = {

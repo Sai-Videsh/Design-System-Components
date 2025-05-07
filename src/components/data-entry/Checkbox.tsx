@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { cn } from '../../utils/cn';
 import { HelperText } from '../typography/HelperText';
 
@@ -27,7 +28,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
-    const inputId = id || `checkbox-${Math.random().toString(36).substring(2, 9)}`;
+    const inputId = id || `checkbox-${uuidv4()}`;
     
     const inputRef = React.useRef<HTMLInputElement>(null);
     
